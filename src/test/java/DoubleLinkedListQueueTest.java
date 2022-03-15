@@ -90,8 +90,32 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testDeleteFirstReturnNextFromFirstBecomeFirstAfterDeletingHim(){
+        list.append(new DequeNode(6, null, null));
+        list.append(new DequeNode(8, null, null));
+        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode(5, null, null));
 
+        DequeNode x = list.peekFirst();
+        DequeNode next = x.getNext();
+
+        list.deleteFirst();
+        assertEquals(next, list.peekFirst());
     }
+
+    @Test
+    public void testAppendLeftReturnNodeIsTheFirstWhenWeAddedIt(){
+        list.append(new DequeNode(6, null, null));
+        list.append(new DequeNode(8, null, null));
+        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode(5, null, null));
+
+        DequeNode x = list.peekFirst();
+
+        list.appendLeft(new DequeNode(3, null, null));
+
+        assertEquals(x.getPrevious(),list.peekFirst());
+    }
+
 
     @Test
     public void testPeekLastReturnNullWhenCallingNextFromLastNode(){

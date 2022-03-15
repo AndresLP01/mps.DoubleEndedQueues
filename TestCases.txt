@@ -69,7 +69,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Al eliminar el primer elemento, el segundo pasa a ser el first.
+    Scenario: Al eliminar el primer elemento, el segundo pasa a ser el first.       --Done
 
         GIVEN: Una lista con dos elementos.
         WHEN: LLamo a lista.deleteFirst().
@@ -78,7 +78,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Se añade un nodo al inicio de la lista.
+    Scenario: Se añade un nodo al inicio de la lista.    --Done
 
         GIVEN: Una lista con 3 elementos
         WHEN: LLamo a lista.appendLeft(node)
@@ -125,14 +125,6 @@ Test cases for DoubleLinkedListQueueTest
        GIVEN: Una lista vacia.
        WHEN: LLamo al metodo size()
        THEN: El método devuelve 0
-
--------------------------------------------------------------------------------
-
-    Scenario: Llamada del método set
-
-        GIVEN: Una lista con un solo nodo
-        WHEN: Llamo al metodo setItem(node)
-        THEN: El nodo de la lista se modifica por el node. 
 
 -------------------------------------------------------------------------------
 
