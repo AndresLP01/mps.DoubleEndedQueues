@@ -121,4 +121,20 @@ class DoubleLinkedListQueueTest {
         int notExpectedValue = 0;
         assertNotEquals(0, obtainedValue);
     }
+
+
+    @Test
+    public void testSizeReturnValueOneWhenFirstEqualsLast(){
+        list.append(new DequeNode(1, null, null));
+        int expectedValue = 1;
+        int obtainedValue = list.size();
+        assertEquals(expectedValue, obtainedValue);
+    }
+
+    @Test
+    public void testSizeReturZeroWhenEmptyList(){
+        int expectedValue = 0;
+        int obtainedValue = list.size();
+        assertEquals(expectedValue, obtainedValue);
+    }
 }

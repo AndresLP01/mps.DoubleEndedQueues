@@ -93,7 +93,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Tamaño 1 para lista de 1 elemento
+    Scenario: Tamaño 1 para lista de 1 elemento            --Done
 
         GIVEN: Una lista de 1 elemento, donde first = null
         WHEN: Llamo al metodo size()
@@ -101,7 +101,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Tamaño de la lista no vacia
+    Scenario: Tamaño de la lista no vacia                   --Done
 
         GIVEN: Una lista con 3 elementos
         WHEN: Llamo al metodo size()
