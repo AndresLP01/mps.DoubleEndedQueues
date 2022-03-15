@@ -19,7 +19,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Al eliminar el primer elemento, el segundo pasa a ser el first.
+    Scenario: Se elimina el primer elemento de una lista.
 
     GIVEN: Una lista con dos elementos.
     WHEN: LLamo a  lista.deleteFirst().
@@ -40,14 +40,15 @@ Test cases for DoubleLinkedListQueueTest
     Scenario: Se elimina un nodo de la lista con un solo elemento.
 
     GIVEN: Una lista con 1 elemento.
-    WHEN: Llamo al metodo lista.DequeNode(node, null, null).
+    WHEN: Llamo al metodo lista.DeleteFirst().
     THEN: La lista se queda vacia (First == null).
 
 -------------------------------------------------------------------------------
 
     Scenario: Se elimina un nodo de la lista con mas de un elemento.
 
-    GIVEN:
+    GIVEN: Una  lista con 3 elementos
+
 
 -------------------------------------------------------------------------------
 
