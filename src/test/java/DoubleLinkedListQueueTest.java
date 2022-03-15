@@ -19,10 +19,14 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void testComputeReturnSizeBiggerThanPreviousSizeWhenAppend(){
+    public void testComputeReturnSizeEqualToListSize(){
         list.append(new DequeNode(5, null, null));
         list.append(new DequeNode(3, null, null));
 
+        int expectedValue = 2;
+        int obtainedValue = list.size();
+
+        assertEquals(expectedValue, obtainedValue);
 
     }
 }

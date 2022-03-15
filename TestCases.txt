@@ -94,13 +94,22 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
+    Scenario: Comprobacion elemento next del ultimo elemento
 
-
-
-    SCENARIO: No hay elemento anterior al primero
-    GIVEN: Una lista no vacía
-    WHEN: Consulto el elemento anterior al primero
-    THEN: Obtengo un error
+        GIVEN: Una lista no vacia
+        WHEN: Llamo a node.next estando en el ultimo elemento.
+        THEN: Obtengo null como resultado
 
 -------------------------------------------------------------------------------
+
+
+    Scenario: Comprobacion elemento previous del primer elemento
+
+        GIVEN: Una lista no vacia
+        WHEN: Llamo a node.previous estando en el primer elemento.
+        THEN: Obtengo null como resultado
+
+
+-------------------------------------------------------------------------------
+
 
