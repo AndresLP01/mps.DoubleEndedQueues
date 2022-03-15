@@ -3,6 +3,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Deque;
+
 
 class DoubleLinkedListQueueTest {
 
@@ -45,6 +47,15 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
+    public void testReturnExceptionWhenDeleteFirstInEmptyList(){
+        assertThrows(DoubleLinkedListQueueException.class, () -> list.deleteFirst());
+    }
+    @Test
+    public void testReturnExceptionWhenDeleteLastInEmptyList(){
+        assertThrows(DoubleLinkedListQueueException.class, () -> list.deleteLast());
+    }
+
+    @Test
     public void testReturnSizeEqualsToZeroWhenDeletingLastElement(){
         list.append(new DequeNode(9, null, null));
 
@@ -53,5 +64,61 @@ class DoubleLinkedListQueueTest {
         int obtainedValue = list.size();
 
         assertEquals(expectedValue, obtainedValue);
+    }
+
+
+    @Test
+    public void testFirstEqualsToLastAfterDeletingOneNodeFromAListWithTwoElements(){
+        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode(5, null, null));
+
+        list.deleteFirst();
+
+        assertEquals(list.peekFirst(), list.peekLast());
+    }
+
+    @Test
+    public void testPreviousFromLastBecomeLastAfterDeletingLast(){
+        list.append(new DequeNode(6, null, null));
+        list.append(new DequeNode(8, null, null));
+        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode(5, null, null));
+
+        DequeNode x = list.peekLast();
+        DequeNode prev = x.getPrevious();
+
+        list.deleteLast();
+        assertEquals(prev, list.peekLast());
+    }
+
+    @Test
+    public void testPeekLastReturnNullWhenCallingNextFromLastNode(){
+        list.append(new DequeNode(6, null, null));
+        list.append(new DequeNode(8, null, null));
+        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode(5, null, null));
+
+        assertEquals(list.peekLast().getNext(), null);
+    }
+
+    @Test
+    public void testPeekFirstReturnNullWhenCallingPreviousFromFirstNode(){
+        list.append(new DequeNode(6, null, null));
+        list.append(new DequeNode(8, null, null));
+        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode(5, null, null));
+
+        assertEquals(list.peekFirst().getPrevious(), null);
+    }
+
+    @Test
+    public void testSizeReturnValueDifferentFromZeroToAListNotEmpty(){
+        list.append(new DequeNode(8, null, null));
+        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode(5, null, null));
+
+        int obtainedValue = list.size();
+        int notExpectedValue = 0;
+        assertNotEquals(0, obtainedValue);
     }
 }

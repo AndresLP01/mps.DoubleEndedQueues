@@ -45,7 +45,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Se elimina un nodo de la lista con un solo elemento.
+    Scenario: Se elimina un nodo de la lista con un solo elemento. --TODO
 
         GIVEN: Una lista con 1 elemento.
         WHEN: Llamo al metodo lista.deleteLast().
@@ -53,7 +53,23 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Se elimina el ultimo nodo de la lista con mas de un elemento.
+    Scenario: Se elimina un nodo de la lista sin elementos   --DONE
+
+        GIVEN: Una lista con 0 elementos.
+        WHEN: Llamo al metodo lista.deleteFirst().
+        THEN: Salta una excepcion.
+
+-------------------------------------------------------------------------------
+
+    Scenario: Se elimina un nodo de la lista sin elementos    --DONE
+
+        GIVEN: Una lista con 0 elementos.
+        WHEN: Llamo al metodo lista.deleteLast().
+        THEN: Salta una excepcion.
+
+-------------------------------------------------------------------------------
+
+    Scenario: Se elimina el ultimo nodo de la lista con mas de un elemento.     --Done
 
         GIVEN: Una lista con 2 elementos
         WHEN: Llamo al metodo deleteFirst()
@@ -61,12 +77,11 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Comprobacion de nodo last
+    Scenario: Se elimina el ultimo nodo de la lista con dos elementos         --Done
 
-        GIVEN: Una lista con 4 elementos
-        WHEN: Llamo al método peekLast();
-        THEN: El next del nodo last es null.
-
+        GIVEN: Una lista con 2 elementos
+        WHEN: Llamo al metodo deleteFirst()
+        THEN: First == last.
 
 -------------------------------------------------------------------------------
 
@@ -102,7 +117,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Comprobacion elemento next del ultimo elemento
+    Scenario: Comprobacion elemento next del ultimo elemento        --Done
 
         GIVEN: Una lista no vacia
         WHEN: Llamo a node.next estando en el ultimo elemento.
@@ -111,7 +126,7 @@ Test cases for DoubleLinkedListQueueTest
 -------------------------------------------------------------------------------
 
 
-    Scenario: Comprobacion elemento previous del primer elemento
+    Scenario: Comprobacion elemento previous del primer elemento    --Done
 
         GIVEN: Una lista no vacia
         WHEN: Llamo a node.previous estando en el primer elemento.
