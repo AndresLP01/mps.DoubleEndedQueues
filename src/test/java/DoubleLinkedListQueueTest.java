@@ -19,7 +19,7 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void testComputeReturnSizeEqualToListSize(){
+    public void testReturnSizeEqualToListSize(){
         list.append(new DequeNode(5, null, null));
         list.append(new DequeNode(3, null, null));
 
@@ -27,6 +27,31 @@ class DoubleLinkedListQueueTest {
         int obtainedValue = list.size();
 
         assertEquals(expectedValue, obtainedValue);
+    }
 
+    @Test
+    public void testReturnSizeBiggerThanThePreviousOne(){
+        list.append(new DequeNode(3, null, null));
+        int previousValue = list.size();
+        list.append(new DequeNode(6, null, null));
+        int actualValue = list.size();
+
+        assertTrue(previousValue < actualValue);
+    }
+
+    @Test
+    public void testReturnExceptionWhenPeekFirstInEmptyList(){
+        assertThrows(DoubleLinkedListQueueException.class, () -> list.peekFirst());
+    }
+
+    @Test
+    public void testReturnSizeEqualsToZeroWhenDeletingLastElement(){
+        list.append(new DequeNode(9, null, null));
+
+        list.deleteFirst();
+        int expectedValue = 0;
+        int obtainedValue = list.size();
+
+        assertEquals(expectedValue, obtainedValue);
     }
 }

@@ -3,7 +3,7 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Exception cuando no hay siguiente elemento.
+    Scenario: Exception cuando no hay siguiente elemento.              --DONE
 
         GIVEN: Tengo la lista una lista de 0 elemento.
         WHEN: Llamo a lista.peekFirst()
@@ -11,11 +11,19 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Cuando hago append, el tamaño de la lista aumenta en 1
+    Scenario: Cuando hago append, el tamaño de la lista aumenta en 1      --DONE
 
         GIVEN: Una lista con 5 elementos.
         WHEN: LLamo a lista.append(5)
         THEN: El size de la lista es mayor que antes de hacer el append.
+
+-------------------------------------------------------------------------------
+
+    Scenario: Cuando hago append, el tamaño de la lista                 --DONE
+
+        GIVEN: Una lista con 2 elementos.
+        WHEN: LLamo a lista.size()
+        THEN: El size de la lista  es igual a 2
 
 -------------------------------------------------------------------------------
 
