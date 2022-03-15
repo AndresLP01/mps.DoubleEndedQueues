@@ -7,12 +7,10 @@ import java.util.Deque;
 public class DequeNodeTest {
     @BeforeAll
     public void setup(){
-        //DequeNode node = new DequeNode(1, new DequeNode(2,null), DequeNode previous);
-     //   DequeNode next = new DequeNode(2,node,null);
 
     }
     @Test
-    public void TestgGetItem(){
+    public void TestGetItem(){
 
     }
 }
