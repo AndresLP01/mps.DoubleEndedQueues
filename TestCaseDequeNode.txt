@@ -2,48 +2,86 @@ Test cases for DequeNode
 
 -------------------------------------------------------------------------------
 
-	   Scenario: El método getItem debe devolver su item correspondiente.
+	   Scenario: El método getItem debe devolver su item correspondiente.  DONE
 
    GIVEN: Tengo una variable DequeNode obj con un item no nulo.
    WHEN: Llamo a obj.getItem().
    THEN: Obtengo item.
 
 --------------------------------------------------------------------------------
-            Scenario: El método getNext debe devolver el next correspondiente.   
+            Scenario: El método getNext debe devolver el next correspondiente.   DONE
      
      GIVEN: Tengo una variable DequeNode obj con un next no nulo.
      WHEN: Llamo a obj.getNext().
      THEN: Obtengo next.                                 
     
 -------------------------------------------------------------------------------
-           Scenario: El método getPrevious debe devolver el previous correspondiente.   
+           Scenario: El método getPrevious debe devolver el previous correspondiente.    DONE
      
      GIVEN: Tengo una variable DequeNode obj con un previous no nulo.
      WHEN: Llamo a obj.getItem().
      THEN: Obtengo item.
     
 -------------------------------------------------------------------------------
-             Scenario: El método isFirstNode debe devolver verdadero o falso
-	     dependiendo de si ese nodo es el primero o no.
+             Scenario: El método isFirstNode debe devolver true si el atributo previous es null. DONE
        
        GIVEN: Tengo una variable DequeNode obj.
        WHEN: Llamo a obj.isFirstNode().
-       THEN: Obtengo verdadero si previous es nulo o falso en caso contrario.
+       THEN: Obtengo true.
       
 ---------------------------------------------------------------------------------
-             Scenario: El método isLastNode debe devolver verdadero o falso                
-               dependiendo de si ese nodo es el primero o no.
+             Scenario: El método isFirstNode debe devolver false si el atributo previous no es null. DONE
+
+       GIVEN: Tengo una variable DequeNode obj.
+       WHEN: Llamo a obj.isFirstNode().
+       THEN: Obtengo false.
+
+---------------------------------------------------------------------------------
+             Scenario: El método isLastNode debe devolver true si el atributo next es null. DONE
          
          GIVEN: Tengo una variable DequeNode obj.                    
          WHEN: Llamo a obj.isLastNode().
-         THEN: Obtengo verdadero si next es nulo o falso en caso contrario.
+         THEN: Obtengo true.
         
-  ---------------------------------------------------------------------------------
-               Scenario: El método isNotTerminalNode debe devolver verdadero o falso                
-               dependiendo de si ese nodo no es un nodo terminal.
+---------------------------------------------------------------------------------
+             Scenario: El método isLastNode debe devolver false si el atributo next no es null. DONE
+
+         GIVEN: Tengo una variable DequeNode obj.
+         WHEN: Llamo a obj.isLastNode().
+         THEN: Obtengo false.
+
+---------------------------------------------------------------------------------
+               Scenario: El método isNotTerminalNode debe devolver true si previous y next no son nulos. DONE
          
          GIVEN: Tengo una variable DequeNode obj.                    
-         WHEN: Llamo a obj.isFirstNode().
-         THEN: Obtengo verdadero si previous y next no es nulo y en caso contrario, falso.
-        
-  ---------------------------------------------------------------------------------
+         WHEN: Llamo a obj.isNotTerminalNode().
+         THEN: Obtengo true.
+
+---------------------------------------------------------------------------------
+               Scenario: El método isNotTerminalNode debe devolver false si previous o next son nulos. DONE
+         GIVEN: Tengo una variable DequeNode obj.
+         WHEN: Llamo a obj.isNotTerminalNode().
+         THEN: Obtengo false.
+
+---------------------------------------------------------------------------------
+                 Scenario: El método setNext debe modificar la variable next. DONE
+
+           GIVEN: Tengo una variable DequeNode obj.
+           WHEN: Llamo a obj.setNext(DequeNode next).
+           THEN: El atributo next de la variable obj es modificado correctamente.
+
+---------------------------------------------------------------------------------
+                  Scenario: El método setItem debe modificar la variable item.
+
+            GIVEN: Tengo una variable DequeNode obj.
+            WHEN: Llamo a obj.setItem(T item).
+            THEN: El atributo item de la variable obj es modificado correctamente.
+
+---------------------------------------------------------------------------------
+                     Scenario: El método setPrevious debe modificar la variable previous.
+
+            GIVEN: Tengo una variable DequeNode obj.
+            WHEN: Llamo a obj.setPrevious(DequeNode previous).
+            THEN: El atributo previous de la variable obj es modificado correctamente.
+
+---------------------------------------------------------------------------------
