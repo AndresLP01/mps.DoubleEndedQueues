@@ -12,7 +12,7 @@ public class DequeNodeTest {
 
     }
     @Test
-    public void TestgGetItem(){
+    public void TestGetItem(){
 
     }
 }
