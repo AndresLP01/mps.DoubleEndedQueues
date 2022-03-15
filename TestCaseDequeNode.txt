@@ -1,0 +1,49 @@
+Test cases for DequeNode
+
+-------------------------------------------------------------------------------
+
+	   Scenario: El método getItem debe devolver su item correspondiente.
+
+   GIVEN: Tengo una variable DequeNode obj con un item no nulo.
+   WHEN: Llamo a obj.getItem().
+   THEN: Obtengo item.
+
+--------------------------------------------------------------------------------
+            Scenario: El método getNext debe devolver el next correspondiente.   
+     
+     GIVEN: Tengo una variable DequeNode obj con un next no nulo.
+     WHEN: Llamo a obj.getNext().
+     THEN: Obtengo next.                                 
+    
+-------------------------------------------------------------------------------
+           Scenario: El método getPrevious debe devolver el previous correspondiente.   
+     
+     GIVEN: Tengo una variable DequeNode obj con un previous no nulo.
+     WHEN: Llamo a obj.getItem().
+     THEN: Obtengo item.
+    
+-------------------------------------------------------------------------------
+             Scenario: El método isFirstNode debe devolver verdadero o falso
+	     dependiendo de si ese nodo es el primero o no.
+       
+       GIVEN: Tengo una variable DequeNode obj.
+       WHEN: Llamo a obj.isFirstNode().
+       THEN: Obtengo verdadero si previous es nulo o falso en caso contrario.
+      
+---------------------------------------------------------------------------------
+             Scenario: El método isLastNode debe devolver verdadero o falso                
+               dependiendo de si ese nodo es el primero o no.
+         
+         GIVEN: Tengo una variable DequeNode obj.                    
+         WHEN: Llamo a obj.isLastNode().
+         THEN: Obtengo verdadero si next es nulo o falso en caso contrario.
+        
+  ---------------------------------------------------------------------------------
+               Scenario: El método isNotTerminalNode debe devolver verdadero o falso                
+               dependiendo de si ese nodo no es un nodo terminal.
+         
+         GIVEN: Tengo una variable DequeNode obj.                    
+         WHEN: Llamo a obj.isFirstNode().
+         THEN: Obtengo verdadero si previous y next no es nulo y en caso contrario, falso.
+        
+  ---------------------------------------------------------------------------------
