@@ -1,10 +1,10 @@
-public class DoubleEndedListQueue implements DoubleEndedQueue{
+public class DoubleLinkedListQueue implements DoubleEndedQueue{
 
     private DequeNode first;
     private DequeNode last;
     private int size;
 
-    public DoubleEndedListQueue(){
+    public DoubleLinkedListQueue(){
         this.first = null;
         this.last = null;
         this.size = 0;
@@ -43,7 +43,7 @@ public class DoubleEndedListQueue implements DoubleEndedQueue{
     @Override
     public void deleteFirst() {
         if (size()==0)
-            throw new DoubleEndedListException("ERROR: No se puede eliminar de una lista vacia");
+            throw new DoubleLinkedListQueueException("ERROR: No se puede eliminar de una lista vacia");
         first = first.getNext();
         first.setPrevious(null);
         size--;
@@ -52,7 +52,7 @@ public class DoubleEndedListQueue implements DoubleEndedQueue{
     @Override
     public void deleteLast() {
         if (size()==0)
-            throw new DoubleEndedListException("ERROR: No se puede eliminar de una lista vacia");
+            throw new DoubleLinkedListQueueException("ERROR: No se puede eliminar de una lista vacia");
         last = last.getPrevious();
         last.setNext(null);
         size--;
@@ -61,14 +61,14 @@ public class DoubleEndedListQueue implements DoubleEndedQueue{
     @Override
     public DequeNode peekFirst() {
         if (size()==0)
-            throw new DoubleEndedListException("ERROR: No se puede seleccionar el primero de una lista vacia");
+            throw new DoubleLinkedListQueueException("ERROR: No se puede seleccionar el primero de una lista vacia");
         return first;
     }
 
     @Override
     public DequeNode peekLast() {
         if (size()==0)
-            throw new DoubleEndedListException("ERROR: No se puede seleccionar el ultimo de una lista vacia");
+            throw new DoubleLinkedListQueueException("ERROR: No se puede seleccionar el ultimo de una lista vacia");
         return last;
     }
 
