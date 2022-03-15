@@ -21,6 +21,20 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
+    public void testReturnExceptionWhenPeekFirstInEmptyList(){
+        assertThrows(DoubleLinkedListQueueException.class, () -> list.peekFirst());
+    }
+
+    @Test
+    public void testReturnExceptionWhenDeleteFirstInEmptyList(){
+        assertThrows(DoubleLinkedListQueueException.class, () -> list.deleteFirst());
+    }
+    @Test
+    public void testReturnExceptionWhenDeleteLastInEmptyList(){
+        assertThrows(DoubleLinkedListQueueException.class, () -> list.deleteLast());
+    }
+
+    @Test
     public void testReturnSizeEqualToListSize(){
         list.append(new DequeNode(5, null, null));
         list.append(new DequeNode(3, null, null));
@@ -41,39 +55,22 @@ class DoubleLinkedListQueueTest {
         assertTrue(previousValue < actualValue);
     }
 
-    @Test
-    public void testReturnExceptionWhenPeekFirstInEmptyList(){
-        assertThrows(DoubleLinkedListQueueException.class, () -> list.peekFirst());
-    }
-
-    @Test
-    public void testReturnExceptionWhenDeleteFirstInEmptyList(){
-        assertThrows(DoubleLinkedListQueueException.class, () -> list.deleteFirst());
-    }
-    @Test
-    public void testReturnExceptionWhenDeleteLastInEmptyList(){
-        assertThrows(DoubleLinkedListQueueException.class, () -> list.deleteLast());
-    }
 
     @Test
     public void testReturnSizeEqualsToZeroWhenDeletingLastElement(){
         list.append(new DequeNode(9, null, null));
-
         list.deleteFirst();
         int expectedValue = 0;
         int obtainedValue = list.size();
-
         assertEquals(expectedValue, obtainedValue);
     }
 
 
     @Test
-    public void testFirstEqualsToLastAfterDeletingOneNodeFromAListWithTwoElements(){
+    public void testDeleteFirstEqualsToLastAfterDeletingOneNodeFromAListWithTwoElements(){
         list.append(new DequeNode(3, null, null));
         list.append(new DequeNode(5, null, null));
-
         list.deleteFirst();
-
         assertEquals(list.peekFirst(), list.peekLast());
     }
 
@@ -92,7 +89,13 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
+    public void testDeleteFirstReturnNextFromFirstBecomeFirstAfterDeletingHim(){
+
+    }
+
+    @Test
     public void testPeekLastReturnNullWhenCallingNextFromLastNode(){
+        //Devuelve null cuando llamamos al next del ultimo nodo
         list.append(new DequeNode(6, null, null));
         list.append(new DequeNode(8, null, null));
         list.append(new DequeNode(3, null, null));

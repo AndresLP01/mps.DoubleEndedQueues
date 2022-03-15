@@ -9,13 +9,22 @@ Test cases for DoubleLinkedListQueueTest
         WHEN: Llamo a lista.peekFirst()
         THEN: Obtengo una excepción de que no hay elementos.
 
+
 -------------------------------------------------------------------------------
 
-    Scenario: Cuando hago append, el tamaño de la lista aumenta en 1      --DONE
+    Scenario: Se elimina un nodo de la lista sin elementos   --DONE
 
-        GIVEN: Una lista con 5 elementos.
-        WHEN: LLamo a lista.append(5)
-        THEN: El size de la lista es mayor que antes de hacer el append.
+        GIVEN: Una lista con 0 elementos.
+        WHEN: Llamo al metodo lista.deleteFirst().
+        THEN: Salta una excepcion.
+
+-------------------------------------------------------------------------------
+
+    Scenario: Se elimina un nodo de la lista sin elementos    --DONE
+
+        GIVEN: Una lista con 0 elementos.
+        WHEN: Llamo al metodo lista.deleteLast().
+        THEN: Salta una excepcion.
 
 -------------------------------------------------------------------------------
 
@@ -24,6 +33,39 @@ Test cases for DoubleLinkedListQueueTest
         GIVEN: Una lista con 2 elementos.
         WHEN: LLamo a lista.size()
         THEN: El size de la lista  es igual a 2
+
+-------------------------------------------------------------------------------
+
+    Scenario: Cuando hago append, el tamaño de la lista aumenta      --DONE
+
+        GIVEN: Una lista con 5 elementos.
+        WHEN: LLamo a lista.append(5)
+        THEN: El size de la lista es mayor que antes de hacer el append.
+
+-------------------------------------------------------------------------------
+
+
+    Scenario: Se elimina un nodo de la lista con un solo elemento. --Done
+
+        GIVEN: Una lista con 1 elemento.
+        WHEN: Llamo al metodo lista.deleteLast().
+        THEN: La lista se queda vacia (last == null).
+
+-------------------------------------------------------------------------------
+
+    Scenario: Se elimina el ultimo nodo de la lista con dos elementos         --Done
+
+        GIVEN: Una lista con 2 elementos
+        WHEN: Llamo al metodo deleteFirst()
+        THEN: First == last.
+
+-------------------------------------------------------------------------------
+
+    Scenario: Se elimina el ultimo nodo de la lista con mas de un elemento.     --Done
+
+        GIVEN: Una lista con 2 elementos
+        WHEN: Llamo al metodo deleteFirst()
+        THEN: Previous pasa a ser el ultimo elemento.
 
 -------------------------------------------------------------------------------
 
@@ -45,59 +87,20 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Se elimina un nodo de la lista con un solo elemento. --TODO
+    Scenario: Comprobacion elemento next del ultimo elemento        --Done
 
-        GIVEN: Una lista con 1 elemento.
-        WHEN: Llamo al metodo lista.deleteLast().
-        THEN: La lista se queda vacia (last == null).
-
--------------------------------------------------------------------------------
-
-    Scenario: Se elimina un nodo de la lista sin elementos   --DONE
-
-        GIVEN: Una lista con 0 elementos.
-        WHEN: Llamo al metodo lista.deleteFirst().
-        THEN: Salta una excepcion.
+        GIVEN: Una lista no vacia
+        WHEN: Llamo a node.next estando en el ultimo elemento.
+        THEN: Obtengo null como resultado
 
 -------------------------------------------------------------------------------
 
-    Scenario: Se elimina un nodo de la lista sin elementos    --DONE
+    Scenario: Comprobacion elemento previous del primer elemento    --Done
 
-        GIVEN: Una lista con 0 elementos.
-        WHEN: Llamo al metodo lista.deleteLast().
-        THEN: Salta una excepcion.
+        GIVEN: Una lista no vacia
+        WHEN: Llamo a node.previous estando en el primer elemento.
+        THEN: Obtengo null como resultado
 
--------------------------------------------------------------------------------
-
-    Scenario: Se elimina el ultimo nodo de la lista con mas de un elemento.     --Done
-
-        GIVEN: Una lista con 2 elementos
-        WHEN: Llamo al metodo deleteFirst()
-        THEN: Previous pasa a ser el ultimo elemento.
-
--------------------------------------------------------------------------------
-
-    Scenario: Se elimina el ultimo nodo de la lista con dos elementos         --Done
-
-        GIVEN: Una lista con 2 elementos
-        WHEN: Llamo al metodo deleteFirst()
-        THEN: First == last.
-
--------------------------------------------------------------------------------
-
-    Scenario: Tamaño 0 para lista vacia
-
-       GIVEN: Una lista vacia.
-       WHEN: LLamo al metodo size()
-       THEN: El método devuelve 0
-
--------------------------------------------------------------------------------
-
-    Scenario: Tamaño 1 para lista de 1 elemento            --Done
-
-        GIVEN: Una lista de 1 elemento, donde first = null
-        WHEN: Llamo al metodo size()
-        THEN: El metodo devuelve 1
 
 -------------------------------------------------------------------------------
 
@@ -109,6 +112,22 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
+    Scenario: Tamaño 1 para lista de 1 elemento            --Done
+
+        GIVEN: Una lista de 1 elemento, donde first = null
+        WHEN: Llamo al metodo size()
+        THEN: El metodo devuelve 1
+
+-------------------------------------------------------------------------------
+
+    Scenario: Tamaño 0 para lista vacia                 --Done
+
+       GIVEN: Una lista vacia.
+       WHEN: LLamo al metodo size()
+       THEN: El método devuelve 0
+
+-------------------------------------------------------------------------------
+
     Scenario: Llamada del método set
 
         GIVEN: Una lista con un solo nodo
@@ -117,22 +136,5 @@ Test cases for DoubleLinkedListQueueTest
 
 -------------------------------------------------------------------------------
 
-    Scenario: Comprobacion elemento next del ultimo elemento        --Done
-
-        GIVEN: Una lista no vacia
-        WHEN: Llamo a node.next estando en el ultimo elemento.
-        THEN: Obtengo null como resultado
-
--------------------------------------------------------------------------------
-
-
-    Scenario: Comprobacion elemento previous del primer elemento    --Done
-
-        GIVEN: Una lista no vacia
-        WHEN: Llamo a node.previous estando en el primer elemento.
-        THEN: Obtengo null como resultado
-
-
--------------------------------------------------------------------------------
 
 
