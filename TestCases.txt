@@ -5,51 +5,97 @@ Test cases for DoubleLinkedListQueueTest
 
     Scenario: Exception cuando no hay siguiente elemento.
 
-    GIVEN: Tengo la lista una lista de 0 elemento.
-    WHEN: Llamo a lista.next()
-    THEN: Obtengo una excepción de que no hay elementos.
+        GIVEN: Tengo la lista una lista de 0 elemento.
+        WHEN: Llamo a lista.peekFirst()
+        THEN: Obtengo una excepción de que no hay elementos.
 
 -------------------------------------------------------------------------------
 
     Scenario: Cuando hago append, el tamaño de la lista aumenta en 1
 
-    GIVEN: Una lista con 5 elementos.
-    WHEN: LLamo a lista.append(5)
-    THEN: El size de la lista es mayor que antes de hacer el append.
+        GIVEN: Una lista con 5 elementos.
+        WHEN: LLamo a lista.append(5)
+        THEN: El size de la lista es mayor que antes de hacer el append.
 
 -------------------------------------------------------------------------------
 
     Scenario: Al eliminar el primer elemento, el segundo pasa a ser el first.
 
-    GIVEN: Una lista con dos elementos.
-    WHEN: LLamo a  lista.deleteFirst().
-    THEN: El segundo elemento, pasa a ser el primero.
+        GIVEN: Una lista con dos elementos.
+        WHEN: LLamo a lista.deleteFirst().
+        THEN: El segundo elemento, pasa a ser el primero.
 
 
 -------------------------------------------------------------------------------
 
     Scenario: Se añade un nodo al inicio de la lista.
 
-    GIVEN: Una lista con 3 elementos
-    WHEN: LLamo a lista.appendLeft(node)
-    THEN: El primer elemento pasa a ser el segundo
-    AND: Node pasa a ser el primer elemento.
+        GIVEN: Una lista con 3 elementos
+        WHEN: LLamo a lista.appendLeft(node)
+        THEN: El primer elemento pasa a ser el segundo
+        AND: Node pasa a ser el primer elemento.
 
 -------------------------------------------------------------------------------
 
     Scenario: Se elimina un nodo de la lista con un solo elemento.
 
-    GIVEN: Una lista con 1 elemento.
-    WHEN: Llamo al metodo lista.DequeNode(node, null, null).
-    THEN: La lista se queda vacia (First == null).
+        GIVEN: Una lista con 1 elemento.
+        WHEN: Llamo al metodo lista.deleteLast().
+        THEN: La lista se queda vacia (last == null).
 
 -------------------------------------------------------------------------------
 
-    Scenario: Se elimina un nodo de la lista con mas de un elemento.
+    Scenario: Se elimina el ultimo nodo de la lista con mas de un elemento.
 
-    GIVEN:
+        GIVEN: Una lista con 2 elementos
+        WHEN: Llamo al metodo deleteFirst()
+        THEN: Previous pasa a ser el ultimo elemento.
 
 -------------------------------------------------------------------------------
+
+    Scenario: Comprobacion de nodo last
+
+        GIVEN: Una lista con 4 elementos
+        WHEN: Llamo al método peekLast();
+        THEN: El next del nodo last es null.
+
+
+-------------------------------------------------------------------------------
+
+    Scenario: Tamaño 0 para lista vacia
+
+       GIVEN: Una lista vacia.
+       WHEN: LLamo al metodo size()
+       THEN: El método devuelve 0
+
+-------------------------------------------------------------------------------
+
+    Scenario: Tamaño 1 para lista de 1 elemento
+
+        GIVEN: Una lista de 1 elemento, donde first = null
+        WHEN: Llamo al metodo size()
+        THEN: El metodo devuelve 1
+
+-------------------------------------------------------------------------------
+
+    Scenario: Tamaño de la lista no vacia
+
+        GIVEN: Una lista con 3 elementos
+        WHEN: Llamo al metodo size()
+        THEN: El valor que devuelve es distinto de 0
+
+-------------------------------------------------------------------------------
+
+    Scenario: Llamada del método set
+
+        GIVEN: Una lista con un solo nodo
+        WHEN: Llamo al metodo setItem(node)
+        THEN: El nodo de la lista se modifica por el node. 
+
+-------------------------------------------------------------------------------
+
+
+
 
     SCENARIO: No hay elemento anterior al primero
     GIVEN: Una lista no vacía
