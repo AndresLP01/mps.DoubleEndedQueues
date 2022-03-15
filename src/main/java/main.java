@@ -6,6 +6,6 @@ public class main {
         var node1 = new DequeNode<>(5,null,null);
         testing.append(node);
         testing.appendLeft(node1);
-        System.out.println(testing.peekFirst().getItem());
+        System.out.println(testing.peekLast().getNext());
     }
 }
