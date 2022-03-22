@@ -84,8 +84,10 @@ public class ComplexOperationsTest {
 
     @Test
     public void shouldReturnCorrectElementAtIndex() {
-        int expectedValue = 5;
-        assertEquals(expectedValue, list1.getAt(0));
+        assertEquals(5, list1.getAt(0).getItem());
+        assertEquals(null, list1.getAt(0).getPrevious());
+        assertEquals(null, list1.getAt(0).getNext());
+
     }
 
     /*
