@@ -92,7 +92,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
     public DequeNode<T> getAt(int position){
         DequeNode<T> res;
         int cont = 0;
-        if(position == 1){
+        if(position == 0){
             res = first;
         }else{
             res = first.getNext();
