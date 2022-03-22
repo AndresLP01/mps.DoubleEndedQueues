@@ -11,6 +11,18 @@ Test cases for DoubleLinkedListQueueTest
 
 
 -------------------------------------------------------------------------------
+        GIVEN: Una lista de un elemento
+        WHEN: Hago deleteLast()
+        THEN: Obtengo una excepcion al hacer peekFirst()
+-------------------------------------------------------------------------------
+        GIVEN: Una lista de un elemento
+        WHEN: Hago deleteLast()
+        THEN: Obtengo una excepcion al hacer peekLast()
+-------------------------------------------------------------------------------
+        GIVEN: Una lista vacia
+        WHEN: Hago appendleft()
+        THEN: El elemento insertado es el first
+-------------------------------------------------------------------------------
 
     Scenario: Se elimina un nodo de la lista sin elementos   --DONE
 
