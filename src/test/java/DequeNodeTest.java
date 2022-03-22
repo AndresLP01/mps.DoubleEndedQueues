@@ -7,8 +7,6 @@ public class DequeNodeTest<T> {
     DequeNode<T> node,previous,next;
     @BeforeEach
     public void setup(){
-<<<<<<< HEAD
-=======
         node = new DequeNode(1,next,previous);
     }
     @Test
@@ -18,7 +16,6 @@ public class DequeNodeTest<T> {
         T valorObtenido = node.getItem();
 
         assertEquals(valorEsperado,valorObtenido);
->>>>>>> juanjo
 
     }
     @Test
