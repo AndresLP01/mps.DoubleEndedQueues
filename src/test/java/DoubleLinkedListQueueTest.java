@@ -3,6 +3,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Comparator;
 import java.util.Deque;
 
 
@@ -19,11 +20,11 @@ class DoubleLinkedListQueueTest {
         this.list2 = new DoubleLinkedListQueue<>();
         this.duplicated = new DoubleLinkedListQueue<>();
 
-        list1.append(new DequeNode(5, null, null));
-        list2.append(new DequeNode(5, null, null));
+        list1.append(new DequeNode(30, null, null));
+        list2.append(new DequeNode(20, null, null));
         list2.append(new DequeNode(1, null, null));
+        list2.append(new DequeNode(8, null, null));
         list2.append(new DequeNode(6, null, null));
-        list2.append(new DequeNode(9, null, null));
         list2.append(new DequeNode(12, null, null));
     }
 
@@ -309,11 +310,10 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testDeleteReturnTrueWhenDeletingElementFromList() {
-        int expectedValue = list2.size() - 1;
+        DequeNode aux = list2.find(6);
         list2.delete(list2.find(6));
-        int obtainedValue = list2.size();
 
-        assertTrue(list2.find(6) == null);
+        assertThrows(DoubleLinkedListQueueException.class, () -> list2.find(aux));
     }
 
     /*
@@ -327,4 +327,44 @@ class DoubleLinkedListQueueTest {
 
         assertTrue(second.equals(list2.peekFirst()));
     }
+    /*
+        Salta una excepcion cuando despues de eliminar el unico elemento, intento llamar a peekFirst (no se podría, porque no hay)
+    */
+
+    @Test
+    public void testDeleteShouldReturnExceptionWhenTryingToPeekFirstInEmptyListAfterDeleting(){
+        list1.delete(list1.peekFirst());
+        assertThrows(DoubleLinkedListQueueException.class, () -> list1.peekFirst());
+    }
+
+    @Test
+    public void testDeleteLastInAList() {
+        DequeNode prev = list2.peekLast().getPrevious();
+        list2.delete(list2.peekLast());
+
+        assertTrue(prev.equals(list2.peekLast()));
+    }
+    /*
+        Salta una excepcion cuando despues de eliminar el unico elemento, intento llamar a peekFirst (no se podría, porque no hay)
+    */
+
+    @Test
+    public void testDeleteShouldReturnExceptionWhenTryingToPeekLastInEmptyListAfterDeleting(){
+        list1.delete(list1.peekLast());
+        assertThrows(DoubleLinkedListQueueException.class, () -> list1.peekLast());
+    }
+
+    /*
+            Correcta ejecucion del sort
+     */
+
+    @Test
+    public void testSortShouldReturnAListSorted(){
+
+        //Comparator<Object> comparator = com;
+        //list2.sort();
+
+        //assertTrue((Integer) list2.peekFirst().getItem() > (Integer) list2.peekFirst().getNext().getItem() );
+    }
+
 }
