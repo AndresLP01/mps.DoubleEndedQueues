@@ -98,9 +98,10 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
             res = first.getNext();
             while(res != null && cont != position) {
                 res = res.getNext();
+                cont++;
             }
             if(res == null){
-                throw new DoubleLinkedListQueueException("El objeto no esta en la lista");
+                throw new DoubleLinkedListQueueException("ERROR: El objeto no esta en la lista");
             }
         }
         return res;
@@ -117,33 +118,64 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
                 res = res.getNext();
             }
             if(res == null){
-                throw new DoubleLinkedListQueueException("El nodo con ese item no esta en la lista");
+                throw new DoubleLinkedListQueueException("ERROR: El nodo con ese item no esta en la lista");
             }
         }
         return res;
     }
     public void delete(DequeNode<T> node){
         DequeNode<T> ant,curr,sig;
-        if(first.equals(node)){
-            curr = first.getNext();
-            first = curr;
-        }else{
-            ant = first;
-            curr = first.getNext();
-            while(!curr.equals(node) && curr != null && ant != null){
-                ant = curr;
-                curr = curr.getNext();
-            }
-            if(curr.equals(node)){
-                sig = curr.getNext();
-                curr = null;
-                ant.setNext(sig);
-            }else{
-                throw new DoubleLinkedListQueueException("El nodo no esta en la lista");
+        if(first == null){
+            throw new DoubleLinkedListQueueException("ERROR: La lista esta vacia");
+        }else {
+            if (first.equals(node) && size == 1) {
+                first = null;
+                size--;
+            } else {
+                ant = first;
+                curr = first.getNext();
+                while (curr != null && ant != null && !curr.equals(node)) {
+                    ant = curr;
+                    curr = curr.getNext();
+                }
+                if (curr.equals(node)) {
+                    sig = curr.getNext();
+                    curr = null;
+                    ant.setNext(sig);
+                    size--;
+                } else {
+                    throw new DoubleLinkedListQueueException("ERROR: El nodo no esta en la lista");
+                }
             }
         }
     }
     public void sort(Comparator<?> comparator){
-
+        DoubleLinkedListQueue<T> aux = new DoubleLinkedListQueue<>();
+        DequeNode min = getMin(this, (Comparator<Object>) comparator);
+        while(this.size != 0){
+            aux.append(min);
+            this.delete(min);
+            this.size--;
+            min = getMin(this,(Comparator<Object>) comparator);
+        }
+        this.first = aux.first;
+        this.last = aux.last;
+        this.size = aux.size;
+    }
+    private DequeNode<T> getMin(DoubleLinkedListQueue list, Comparator<Object> comparator){
+        DequeNode aux = first.getNext();
+        DequeNode res = first;
+        if(aux == null || res == null){
+            throw new DoubleLinkedListQueueException("ERROR: La lista esta vacia");
+        }else{
+            while(aux != null && res != null){
+                if(comparator.compare(aux.getItem(),res.getItem()) < 0){
+                    res = aux;
+                }else{
+                    aux = aux.getNext();
+                }
+            }
+        }
+        return res;
     }
 }
