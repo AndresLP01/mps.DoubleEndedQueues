@@ -8,9 +8,7 @@ import java.util.Deque;
 
 class DoubleLinkedListQueueTest {
 
-    private DoubleLinkedListQueue list;
-    DoubleLinkedListQueue empty, list1, list2, duplicated;
-
+    private DoubleLinkedListQueue list,empty, list1, list2, duplicated;
 
     @BeforeEach
     public void setup(){
@@ -72,7 +70,6 @@ class DoubleLinkedListQueueTest {
         assertTrue(previousValue < actualValue);
     }
 
-
     @Test
     public void testReturnSizeEqualsToZeroWhenDeletingLastElement(){
         list.append(new DequeNode(9, null, null));
@@ -81,7 +78,6 @@ class DoubleLinkedListQueueTest {
         int obtainedValue = list.size();
         assertEquals(expectedValue, obtainedValue);
     }
-
 
     @Test
     public void testDeleteFirstEqualsToLastAfterDeletingOneNodeFromAListWithTwoElements(){
@@ -133,7 +129,6 @@ class DoubleLinkedListQueueTest {
         assertEquals(x.getPrevious(),list.peekFirst());
     }
 
-
     @Test
     public void testPeekLastReturnNullWhenCallingNextFromLastNode(){
         //Devuelve null cuando llamamos al next del ultimo nodo
@@ -166,7 +161,6 @@ class DoubleLinkedListQueueTest {
         assertNotEquals(0, obtainedValue);
     }
 
-
     @Test
     public void testSizeReturnValueOneWhenFirstEqualsLast(){
         list.append(new DequeNode(1, null, null));
@@ -181,7 +175,6 @@ class DoubleLinkedListQueueTest {
         int obtainedValue = list.size();
         assertEquals(expectedValue, obtainedValue);
     }
-
 
     /*
         -------- getAt Testing --------
@@ -236,7 +229,6 @@ class DoubleLinkedListQueueTest {
         assertEquals(5, list1.getAt(0).getItem());
         assertEquals(null, list1.getAt(0).getPrevious());
         assertEquals(null, list1.getAt(0).getNext());
-
     }
 
     /*
@@ -316,6 +308,5 @@ class DoubleLinkedListQueueTest {
         list2.delete(list2.peekFirst());
 
         assertTrue(second.equals(list2.peekFirst()));
-
     }
 }
