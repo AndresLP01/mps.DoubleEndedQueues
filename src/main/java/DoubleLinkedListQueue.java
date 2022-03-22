@@ -1,4 +1,6 @@
-public class DoubleLinkedListQueue implements DoubleEndedQueue{
+import java.util.Comparator;
+
+public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
 
     private DequeNode first;
     private DequeNode last;
@@ -85,5 +87,63 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue{
     @Override
     public int size() {
        return size;
+    }
+
+    public DequeNode<T> getAt(int position){
+        DequeNode<T> res;
+        int cont = 0;
+        if(position == 1){
+            res = first;
+        }else{
+            res = first.getNext();
+            while(res != null && cont != position) {
+                res = res.getNext();
+            }
+            if(res == null){
+                throw new DoubleLinkedListQueueException("El objeto no esta en la lista");
+            }
+        }
+        return res;
+    }
+    public DequeNode<T> find (T item){
+        DequeNode<T> res;
+        if(first.getItem() == item){
+            res = first;
+        }else if(last.getItem() == item){
+            res = last;
+        }else{
+            res = first.getNext();
+            while(res.getItem() != item && res != null){
+                res = res.getNext();
+            }
+            if(res == null){
+                throw new DoubleLinkedListQueueException("El nodo con ese item no esta en la lista");
+            }
+        }
+        return res;
+    }
+    public void delete(DequeNode<T> node){
+        DequeNode<T> ant,curr,sig;
+        if(first.equals(node)){
+            curr = first.getNext();
+            first = curr;
+        }else{
+            ant = first;
+            curr = first.getNext();
+            while(!curr.equals(node) && curr != null && ant != null){
+                ant = curr;
+                curr = curr.getNext();
+            }
+            if(curr.equals(node)){
+                sig = curr.getNext();
+                curr = null;
+                ant.setNext(sig);
+            }else{
+                throw new DoubleLinkedListQueueException("El nodo no esta en la lista");
+            }
+        }
+    }
+    public void sort(Comparator<?> comparator){
+
     }
 }
