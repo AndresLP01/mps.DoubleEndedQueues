@@ -3,7 +3,7 @@
 ####################################DELETE###############################################
 #########################################################################################
 ---------------------------------------------------------------------
-        Scenario: Eliminar un elemento de la lista vacia
+        Scenario: Eliminar un elemento de la lista vacia       --Need to be fixed ( Hay que tener en cuenta que la lista este vacia)
 
         GIVEN: Un lista vacia
         WHEN: Llamo al método delete(node)
@@ -11,7 +11,8 @@
 
 ---------------------------------------------------------------------
 
-        Scenario: Intentar eliminar un elemento que no está en la lista
+        Scenario: Intentar eliminar un elemento que no está en la lista    --Need to be fixed (no puede hacer equals, ya que al ser de 1 elemento la lista,
+                                                                                                    el curr no puede hacer getNext)
 
         GIVEN: Una lista no vacía que no contiene el nodo (5)
         WHEN: Llamo al método delete(node(5))
@@ -19,10 +20,10 @@
 
 ---------------------------------------------------------------------
 
-        Scenario: Eliminar un elemento de una lista no vacía
+        Scenario: Eliminar un elemento de una lista no vacía            --Need to be fixed: Al hacer delete tiene que reducir uno el tamaño
 
-        GIVEN: Una lista no vacía con 3 elementos.
-        WHEN: Llamo al método delete(Node(5)).
+        GIVEN: Una lista no vacía con 5 elementos.
+        WHEN: Llamo al método delete(Node(6)).
         AND: El nodo se encuentra en la lista.
         THEN: El tamaño de la lista se reduce en 1.
 
