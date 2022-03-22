@@ -41,6 +41,24 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
+    public void testShouldReturnNullWhenDeletingLastInAList(){
+        list1.deleteLast();
+        assertThrows(DoubleLinkedListQueueException.class, () -> list1.peekFirst());
+    }
+
+    @Test
+    public void testShouldReturnFirstWhenAppendLeft(){
+        DequeNode x = new DequeNode(5, null, null);
+        empty.appendLeft(x);
+        assertEquals(x, empty.peekFirst());
+    }
+
+    @Test
+    public void testShouldReturnNullWhenDeletingLastInAList2(){
+        list1.deleteLast();
+        assertThrows(DoubleLinkedListQueueException.class, () -> list1.peekLast());
+    }
+    @Test
     public void testReturnExceptionWhenDeleteFirstInEmptyList(){
         assertThrows(DoubleLinkedListQueueException.class, () -> list.deleteFirst());
     }
