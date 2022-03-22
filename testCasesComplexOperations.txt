@@ -77,3 +77,57 @@
     AND: El elemento en una posicion no es mayor que el anterior
     THEN: La operacion no se ha realizado correctamente.
 ---------------------------------------------------------------------
+Scenario: getAt con un índice mayor que el tamaño
+
+GIVEN: Una lista doblemente enlazada vacía o no vacía
+WHEN: Accedo a un indice que no tiene un nodo
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: getAt recibe un indice negativo
+
+GIVEN: Una lista doblemente enlazada vacía o no vacía
+WHEN: Accedo a un índice negativo
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: getAt devuelve un item null
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Accedo a un nodo válido pero con un item nulo
+THEN: Devuelve nulo
+---------------------------------------------------------------------
+Scenario: getAt en una lista vacía
+
+GIVEN: Una lista doblemente enlazada vacía
+WHEN: Accedo a cualquier índice con cualquier valor
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: getAt en una lista no vacía devuelve el elemento correspondiente
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Accedo a un índice válido de un nodo con un elemento no nulo
+THEN: Obtengo ese elemento
+---------------------------------------------------------------------
+Scenario: find a una lista vacía
+
+GIVEN: Una lista doblemente enlazada vacía
+WHEN: Accedo a cualquier indice con cualquier valor
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: find de un elemento que no está en la lista
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Uso find para buscar un elemento que no está en la lista
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: find de un elemento que está en la lista
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Uso find para buscar un elemento que está en la lista
+THEN: Devuelve el nodo
+---------------------------------------------------------------------
+Scenario: find de un elemento repetido en la lista
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Uso find para buscar un elemento repetido que está en la lista
+THEN: Devuelve el primer nodo encontrado
+---------------------------------------------------------------------
