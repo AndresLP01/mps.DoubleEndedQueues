@@ -115,10 +115,6 @@ public class ComplexOperationsTest {
         assertEquals(expectedNode1, list1.find(5));
 
         var obtainedNode = list2.find(9);
-
-
-
-
     }
 
     /*
