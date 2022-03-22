@@ -107,18 +107,20 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
         return res;
     }
     public DequeNode<T> find (T item){
-        DequeNode<T> res;
-        if(first.getItem() == item){
-            res = first;
-        }else if(last.getItem() == item){
-            res = last;
-        }else{
-            res = first.getNext();
-            while(res.getItem() != item && res != null){
+        DequeNode<T> res = first;
+        if(res == null){
+            throw new DoubleLinkedListQueueException("ERROR: La lista esta vacia");
+        }else {
+            if (last.getItem() == item) {
+                res = last;
+            } else {
                 res = res.getNext();
-            }
-            if(res == null){
-                throw new DoubleLinkedListQueueException("ERROR: El nodo con ese item no esta en la lista");
+                while (!res.getItem().equals(item) && res != null) {
+                    res = res.getNext();
+                }
+                if (res == null) {
+                    throw new DoubleLinkedListQueueException("ERROR: El nodo con ese item no esta en la lista");
+                }
             }
         }
         return res;
@@ -130,24 +132,27 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
         }else {
             if (first.equals(node) && size == 1) {
                 first = null;
+                last = null;
                 size--;
-            } else {
-                ant = first;
-                curr = first.getNext();
-                while (curr != null && ant != null && !curr.equals(node)) {
-                    ant = curr;
-                    curr = curr.getNext();
-                }
-                if (curr.equals(node)) {
-                    sig = curr.getNext();
-                    curr = null;
-                    ant.setNext(sig);
-                    size--;
-                } else {
-                    throw new DoubleLinkedListQueueException("ERROR: El nodo no esta en la lista");
+            } else if(first.equals(node)) {
+                    first.setNext(first.getNext());
+                }else{
+                    ant = first;
+                    curr = first.getNext();
+                    while (curr != null && ant != null && !curr.equals(node)) {
+                        ant = curr;
+                        curr = curr.getNext();
+                    }
+                    if (curr != null && curr.equals(node)) {
+                        sig = curr.getNext();
+                        curr = null;
+                        ant.setNext(sig);
+                        size--;
+                    } else {
+                        throw new DoubleLinkedListQueueException("ERROR: El nodo no esta en la lista");
+                    }
                 }
             }
-        }
     }
     public void sort(Comparator<?> comparator){
         DoubleLinkedListQueue<T> aux = new DoubleLinkedListQueue<>();
