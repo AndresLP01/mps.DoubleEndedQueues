@@ -1,10 +1,13 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import com.sun.source.tree.Tree;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 import java.util.Deque;
+import java.util.TreeSet;
 
 
 class DoubleLinkedListQueueTest {
@@ -310,10 +313,13 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testDeleteReturnTrueWhenDeletingElementFromList() {
-        DequeNode aux = list2.find(6);
-        list2.delete(list2.find(6));
+        int expectedValue = list2.size() - 1;
+        DequeNode aux = list2.find(8);
+        list2.delete(aux);
+        int obtainedValue = list2.size();
 
-        assertThrows(DoubleLinkedListQueueException.class, () -> list2.find(aux));
+        assertEquals(expectedValue, obtainedValue);
+
     }
 
     /*
@@ -361,10 +367,15 @@ class DoubleLinkedListQueueTest {
     @Test
     public void testSortShouldReturnAListSorted(){
 
-        //Comparator<Object> comparator = com;
-        //list2.sort();
+        Comparator<Object> comparator = new Comparator<Object>() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return this.compare(o1, o2);
+            }
+        };
 
-        //assertTrue((Integer) list2.peekFirst().getItem() > (Integer) list2.peekFirst().getNext().getItem() );
+        list2.sort(comparator);
+        assertTrue((Integer) list2.peekFirst().getItem() > (Integer) list2.peekFirst().getNext().getItem() );
     }
 
 }
