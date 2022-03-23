@@ -367,10 +367,11 @@ class DoubleLinkedListQueueTest {
     @Test
     public void testSortShouldReturnAListSorted(){
 
-        Comparator<Object> comparator = new Comparator<Object>() {
+        Comparator<Integer> comparator = new Comparator<Integer>() {
+
             @Override
-            public int compare(Object o1, Object o2) {
-                return this.compare(o1, o2);
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
             }
         };
 
