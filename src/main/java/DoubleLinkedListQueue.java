@@ -90,17 +90,19 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
     }
 
     public DequeNode<T> getAt(int position){
-        DequeNode<T> res;
+        DequeNode<T> res = null;
         int cont = 0;
         if(position == 0){
             res = first;
         }else{
-            res = first.getNext();
-            while(res != null && cont != position) {
-                res = res.getNext();
-                cont++;
+            if(position < size) {
+                res = first.getNext();
+                while (res != null && cont != position) {
+                    res = res.getNext();
+                    cont++;
+                }
             }
-            if(res == null){
+            if (res == null) {
                 throw new DoubleLinkedListQueueException("ERROR: El objeto no esta en la lista");
             }
         }

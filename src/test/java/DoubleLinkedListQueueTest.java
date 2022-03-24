@@ -230,7 +230,7 @@ class DoubleLinkedListQueueTest {
     public void shouldReturnNullIfElementAtIndexIsNull() {
         var node = new DequeNode<>(null, null, null);
         list1.append(node); //Index at 1
-        assertEquals(null, list1.getAt(1));
+        assertEquals(null, list1.getAt(1).getItem());
     }
 
     /*
