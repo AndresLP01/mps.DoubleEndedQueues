@@ -153,6 +153,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
                     if (curr != null && curr.equals(node)) {
                         sig = curr.getNext();
                         curr = null;
+                        sig.setPrevious(ant);
                         ant.setNext(sig);
                         size--;
                     } else {
