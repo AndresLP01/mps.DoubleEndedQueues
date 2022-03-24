@@ -105,7 +105,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
                 res = last;
             } else {
                 res = res.getNext();
-                while (!res.getItem().equals(item) && res != null) {
+                while (res != null && !res.getItem().equals(item)) {
                     res = res.getNext();
                 }
                 if (res == null) {
