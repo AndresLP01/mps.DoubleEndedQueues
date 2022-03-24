@@ -46,17 +46,27 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
     public void deleteFirst() {
         if (size()==0)
             throw new DoubleLinkedListQueueException("ERROR: No se puede eliminar de una lista vacia");
-        first = first.getNext();
-        first.setPrevious(null);
+        if (size() == 1){
+            first = null;
+            last  = null;
+        }else{
+            first = first.getNext();
+            first.setPrevious(null);
+        }
         size--;
     }
 
     @Override
     public void deleteLast() {
-        if (size()==0)
+        if (size() == 0)
             throw new DoubleLinkedListQueueException("ERROR: No se puede eliminar de una lista vacia");
-        last = last.getPrevious();
-        last.setNext(null);
+        if (size() == 1){
+            last  = null;
+            first = null;
+        }else {
+            last = last.getPrevious();
+            last.setNext(null);
+        }
         size--;
     }
 

@@ -1,0 +1,134 @@
+#########################################################################################
+#####################################TEST################################################
+####################################DELETE###############################################
+#########################################################################################
+---------------------------------------------------------------------
+        Scenario: Eliminar un elemento de la lista vacia       --Need to be fixed ( Hay que tener en cuenta que la lista este vacia)
+
+        GIVEN: Un lista vacia
+        WHEN: Llamo al método delete(node)
+        THEN: Salta una excepción de lista vacia
+
+---------------------------------------------------------------------
+
+        Scenario: Intentar eliminar un elemento que no está en la lista    --Need to be fixed (no puede hacer equals, ya que al ser de 1 elemento la lista,
+                                                                                                    el curr no puede hacer getNext)
+
+        GIVEN: Una lista no vacía que no contiene el nodo (5)
+        WHEN: Llamo al método delete(node(5))
+        THEN: Salta una excepción de que el nodo no se encuentra en la lista.
+
+---------------------------------------------------------------------
+
+        Scenario: Eliminar un elemento de una lista no vacía            --Need to be fixed: Al hacer delete tiene que reducir uno el tamaño
+
+        GIVEN: Una lista no vacía con 5 elementos.
+        WHEN: Llamo al método delete(Node(6)).
+        AND: El nodo se encuentra en la lista.
+        THEN: El tamaño de la lista se reduce en 1.
+
+---------------------------------------------------------------------
+
+        Scenario: Elimina el primero elemento de una lista no vacia
+
+        GIVEN: Una lista no vacia con 5 elementos
+        WHEN: Llamo al metodo delete(peekFirst())
+        THEN: EL segundo elemento se convierte en el primero.
+
+
+        Scenario: Elimina el primero elemento de una lista no vacia
+
+        GIVEN: Una lista no vacia con 5 elementos.
+        WHEN: Llamo al metodo delete(peekFirst()).
+        THEN: El previo del segundo elemento se queda a null.
+
+---------------------------------------------------------------------
+
+        Scenario: Elimina el ultimo elemento de una lista no vacia
+
+        GIVEN: Una lista no vacia con 5 elementos
+        WHEN: Llamo al metodo delete(peekLast())
+        THEN: EL penúltimo elemento se convierte en el ultimo.
+
+
+        Scenario: Elimina el ultimo elemento de una lista no vacia
+
+        GIVEN: Una lista no vacia con 5 elementos.
+        WHEN: Llamo al metodo delete(peekLast()).
+        THEN: El next del ultimo elemento se queda a null.
+
+---------------------------------------------------------------------
+
+#########################################################################################
+#####################################TEST################################################
+#####################################SORT################################################
+#########################################################################################
+
+    Scenario: Buena ejecucion del sort
+
+    GIVEN: Una lista con 5 elementos
+    WHEN: Recorro la lista, y elemento previo al siguiente es menor que el siguiente.
+    THEN: La lista esta ordenada correctamente.
+
+---------------------------------------------------------------------
+    Scenario: La lista no se ha ordenado correctamente.
+
+    GIVEN: Una lista con 5 elementos
+    WHEN: Recorro la lista despues de haber ordenado.
+    AND: El elemento en una posicion no es mayor que el anterior
+    THEN: La operacion no se ha realizado correctamente.
+---------------------------------------------------------------------
+Scenario: getAt con un índice mayor que el tamaño
+
+GIVEN: Una lista doblemente enlazada vacía o no vacía
+WHEN: Accedo a un indice que no tiene un nodo
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: getAt recibe un indice negativo
+
+GIVEN: Una lista doblemente enlazada vacía o no vacía
+WHEN: Accedo a un índice negativo
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: getAt devuelve un item null
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Accedo a un nodo válido pero con un item nulo
+THEN: Devuelve nulo
+---------------------------------------------------------------------
+Scenario: getAt en una lista vacía
+
+GIVEN: Una lista doblemente enlazada vacía
+WHEN: Accedo a cualquier índice con cualquier valor
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: getAt en una lista no vacía devuelve el elemento correspondiente
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Accedo a un índice válido de un nodo con un elemento no nulo
+THEN: Obtengo ese elemento
+---------------------------------------------------------------------
+Scenario: find a una lista vacía
+
+GIVEN: Una lista doblemente enlazada vacía
+WHEN: Accedo a cualquier indice con cualquier valor
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: find de un elemento que no está en la lista
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Uso find para buscar un elemento que no está en la lista
+THEN: Obtengo una excepción
+---------------------------------------------------------------------
+Scenario: find de un elemento que está en la lista
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Uso find para buscar un elemento que está en la lista
+THEN: Devuelve el nodo
+---------------------------------------------------------------------
+Scenario: find de un elemento repetido en la lista
+
+GIVEN: Una lista doblemente enlazada no vacía
+WHEN: Uso find para buscar un elemento repetido que está en la lista
+THEN: Devuelve el primer nodo encontrado
+---------------------------------------------------------------------
