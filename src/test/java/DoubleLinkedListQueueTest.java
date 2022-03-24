@@ -211,7 +211,7 @@ class DoubleLinkedListQueueTest {
     public void shouldReturnErrorIfIndexOutOfBounds() {
         assertThrows(DoubleLinkedListQueueException.class, () -> empty.getAt(1));
         assertThrows(DoubleLinkedListQueueException.class, () -> list1.getAt(1));
-        assertThrows(DoubleLinkedListQueueException.class, () -> list2.getAt(list1.size() + 1));
+        assertThrows(DoubleLinkedListQueueException.class, () -> list2.getAt(list2.size() + 1));
     }
 
     /*
@@ -231,7 +231,7 @@ class DoubleLinkedListQueueTest {
     public void shouldReturnNullIfElementAtIndexIsNull() {
         var node = new DequeNode<>(null, null, null);
         list1.append(node); //Index at 1
-        assertEquals(null, list1.getAt(1).getItem());
+        assertEquals(null, list1.getAt(1));
     }
 
     /*

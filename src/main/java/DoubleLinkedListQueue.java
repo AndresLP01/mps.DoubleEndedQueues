@@ -95,16 +95,15 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
         if(position == 0){
             res = first;
         }else{
-            if(position < size) {
+            if(position > 0 && position < size) {
                 res = first.getNext();
-                while (res != null && cont != position) {
+                while (cont != position) {
                     res = res.getNext();
                     cont++;
                 }
             }
-            if (res == null) {
-                throw new DoubleLinkedListQueueException("ERROR: El objeto no esta en la lista");
-            }
+        }if(position >= size || position < 0){
+            throw new DoubleLinkedListQueueException("ERROR: La posicion es incorrecta");
         }
         return res;
     }
@@ -113,8 +112,8 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
         if(res == null){
             throw new DoubleLinkedListQueueException("ERROR: La lista esta vacia");
         }else {
-            if (last.getItem() == item) {
-                res = last;
+            if (first.getItem() == item) {
+                res = first;
             } else {
                 res = res.getNext();
                 while (res != null && !res.getItem().equals(item)) {
