@@ -248,7 +248,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void shouldReturnCorrectElementAtIndex() {
-        assertEquals(5, list1.getAt(0).getItem());
+        assertEquals(30, list1.getAt(0).getItem());
         assertEquals(null, list1.getAt(0).getPrevious());
         assertEquals(null, list1.getAt(0).getNext());
     }
