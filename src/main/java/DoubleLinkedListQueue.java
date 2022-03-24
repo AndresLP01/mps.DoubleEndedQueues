@@ -151,18 +151,16 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
     }
     public void sort(Comparator<?> comparator) {
         DoubleLinkedListQueue<T> aux = new DoubleLinkedListQueue<T>();
-        aux.first = this.first;
-        aux.last = this.last;
-        aux.size = this.size;
-        this.first = null;
-        this.last = null;
-        this.size = 0;
-        DequeNode min = getMin(aux, (Comparator<Object>) comparator);
-        while(aux.size != 0){
-            this.append(min);
-            aux.delete(min);
-            min = getMin(aux,(Comparator<Object>) comparator);
+
+        DequeNode min = getMin(this, (Comparator<Object>) comparator);
+        while(this.size != 0){
+            aux.append(min);
+            this.delete(min);
+            min = getMin(this,(Comparator<Object>) comparator);
         }
+        this.first = aux.first;
+        this.last = aux.last;
+        this.size = aux.size;
     }
     private DequeNode<T> getMin(DoubleLinkedListQueue list, Comparator<Object> comparator){
         DequeNode aux = list.first.getNext();
