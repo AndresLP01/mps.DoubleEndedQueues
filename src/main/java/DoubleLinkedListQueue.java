@@ -150,7 +150,10 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
             }
     }
     public void sort(Comparator<?> comparator) {
-        DoubleLinkedListQueue<T> aux = this;
+        DoubleLinkedListQueue<T> aux = new DoubleLinkedListQueue<T>();
+        aux.first = this.first;
+        aux.last = this.last;
+        aux.size = this.size;
         this.first = null;
         this.last = null;
         this.size = 0;
