@@ -10,7 +10,7 @@ public class DequeNodeTest<T> {
         node = new DequeNode(1,next,previous);
     }
     @Test
-    public void siLlamoAgetItemDevuelveItem(){
+    public void testReturnItemIfCallGetItem(){
         int valorEsperado = 1;
 
         T valorObtenido = node.getItem();
@@ -19,7 +19,7 @@ public class DequeNodeTest<T> {
 
     }
     @Test
-    public void siLlamoAgetNextDevuelveNext(){
+    public void testReturnNextIfCallGetNext(){
         DequeNode<T> valorEsperado = next;
 
         DequeNode<T> valorObtenido = node.getNext();
@@ -28,7 +28,7 @@ public class DequeNodeTest<T> {
 
     }
     @Test
-    public void siLlamoAgetPreviousDevuelvePrevious(){
+    public void testReturnPreviousIfCallGetPrevious(){
         DequeNode<T> valorEsperado = previous;
 
         DequeNode<T> valorObtenido = node.getPrevious();
@@ -37,7 +37,7 @@ public class DequeNodeTest<T> {
 
     }
     @Test
-    public void siLlamoAisFirstNodeYPreviousNoEsNullDevuelveFalse(){
+    public void testRerturnFalseIfCallIsFirstNodeAndPreviousIsNotNull(){
         boolean valorEsperado = false;
 
         previous = new DequeNode(2,node,null);
@@ -49,7 +49,7 @@ public class DequeNodeTest<T> {
 
     }
     @Test
-    public void siLlamoAisFirstNodeYPreviousEsNullDevuelveTrue(){
+    public void testReturnTrueIfCallIsFirstNodeAndPreviousIsNull(){
         boolean valorEsperado = true;
 
         boolean valorObtenido = node.isFirstNode();
@@ -58,7 +58,7 @@ public class DequeNodeTest<T> {
 
     }
     @Test
-    public void siLlamoAisLastNodeYNextNoEsNullDevuelveFalse(){
+    public void testReturnFalseIfCallIsLastNodeAndNextIsNotNull(){
         boolean valorEsperado = false;
 
         next = new DequeNode(3,null,node);
@@ -70,7 +70,7 @@ public class DequeNodeTest<T> {
 
     }
     @Test
-    public void siLlamoAisLastNodeYNextEsNullDevuelveTrue(){
+    public void testReturnTrueIfCallIsLastNodeAndNextIsNull(){
         boolean valorEsperado = true;
 
         boolean valorObtenido = node.isLastNode();
