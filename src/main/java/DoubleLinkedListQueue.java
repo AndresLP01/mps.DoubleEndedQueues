@@ -139,9 +139,11 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
             } else if(first.equals(node)) {
                     first =  first.getNext();
                     first.setPrevious(null);
+                    size--;
                 }else if(last.equals(node)) {
                     last = last.getPrevious();
                     last.setNext(null);
+                    size--;
 
                  }else{
                     ant = first;
@@ -167,28 +169,35 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
 
         DequeNode min = getMin(this, (Comparator<Object>) comparator);
         while(this.size != 0){
-            aux.append(min);
+            DequeNode nuevo = new DequeNode<>(min.getItem(),null,null);
+            aux.append(nuevo);
             this.delete(min);
-            min = getMin(this,(Comparator<Object>) comparator);
+            if(this.size > 0){
+                min = getMin(this,(Comparator<Object>) comparator);
+            }
         }
         this.first = aux.first;
         this.last = aux.last;
         this.size = aux.size;
     }
     private DequeNode<T> getMin(DoubleLinkedListQueue list, Comparator<Object> comparator){
-        DequeNode aux = list.first.getNext();
-        DequeNode res = list.first;
-        if(res == null){
-            throw new DoubleLinkedListQueueException("ERROR: La lista esta vacia");
-        }else{
-            while(aux != null && res != null){
-                if(comparator.compare(aux.getItem(),res.getItem()) < 0){
-                    res = aux;
-                }else{
-                    aux = aux.getNext();
+
+
+
+            DequeNode aux = list.first.getNext();
+            DequeNode res = list.first;
+            if(res == null){
+                throw new DoubleLinkedListQueueException("ERROR: La lista esta vacia");
+            }else{
+                while(aux != null && res != null){
+                    if(comparator.compare(aux.getItem(),res.getItem()) < 0){
+                        res = aux;
+                    }else{
+                        aux = aux.getNext();
+                    }
                 }
             }
-        }
-        return res;
+            return res;
+
     }
 }
