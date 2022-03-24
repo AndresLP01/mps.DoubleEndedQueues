@@ -393,7 +393,20 @@ class DoubleLinkedListQueueTest {
             assertTrue((Integer) list2.getAt(i).getItem() < (Integer) list2.getAt(i).getNext().getItem() );
             i++;
         }
-
     }
 
+    @Test
+    public void testSortShouldReturnFirstItemLowerThanSecond(){
+
+        Comparator<Integer> comparator = new Comparator<Integer>() {
+
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        };
+            list2.sort(comparator);
+
+            assertTrue((Integer) list2.getAt(0).getItem() < (Integer) list2.getAt(1).getItem());
+    }
 }

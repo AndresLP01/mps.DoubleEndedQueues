@@ -180,23 +180,15 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue{
         this.size = aux.size;
     }
     private DequeNode<T> getMin(DoubleLinkedListQueue list, Comparator<Object> comparator){
-
-
-
             DequeNode aux = list.first.getNext();
             DequeNode res = list.first;
-            if(res == null){
-                throw new DoubleLinkedListQueueException("ERROR: La lista esta vacia");
-            }else{
                 while(aux != null && res != null){
                     if(comparator.compare(aux.getItem(),res.getItem()) < 0){
                         res = aux;
-                    }else{
+                    }else {
                         aux = aux.getNext();
                     }
-                }
             }
             return res;
-
     }
 }
