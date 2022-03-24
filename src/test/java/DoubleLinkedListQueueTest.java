@@ -1,18 +1,19 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.sun.source.tree.Tree;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
-import java.util.Deque;
-import java.util.TreeSet;
 
 
 class DoubleLinkedListQueueTest {
 
-    private DoubleLinkedListQueue list,empty, list1, list2, duplicated;
+    private DoubleLinkedListQueue list;
+    private DoubleLinkedListQueue<Object> empty;
+    private DoubleLinkedListQueue list1;
+    private DoubleLinkedListQueue list2;
+    private DoubleLinkedListQueue duplicated;
 
     @BeforeEach
     public void setup(){
@@ -23,12 +24,12 @@ class DoubleLinkedListQueueTest {
         this.list2 = new DoubleLinkedListQueue<>();
         this.duplicated = new DoubleLinkedListQueue<>();
 
-        list1.append(new DequeNode(30, null, null));
-        list2.append(new DequeNode(20, null, null));
-        list2.append(new DequeNode(1, null, null));
-        list2.append(new DequeNode(8, null, null));
-        list2.append(new DequeNode(6, null, null));
-        list2.append(new DequeNode(12, null, null));
+        list1.append(new DequeNode<>(30, null, null));
+        list2.append(new DequeNode<>(20, null, null));
+        list2.append(new DequeNode<>(1, null, null));
+        list2.append(new DequeNode<>(8, null, null));
+        list2.append(new DequeNode<>(6, null, null));
+        list2.append(new DequeNode<>(12, null, null));
     }
 
     @AfterEach
@@ -52,7 +53,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testShouldReturnFirstWhenAppendLeft(){
-        DequeNode x = new DequeNode(5, null, null);
+        DequeNode<Integer> x = new DequeNode<>(5, null, null);
         empty.appendLeft(x);
         assertEquals(x, empty.peekFirst());
     }
@@ -73,8 +74,8 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testReturnSizeEqualToListSize(){
-        list.append(new DequeNode(5, null, null));
-        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
+        list.append(new DequeNode<>(3, null, null));
 
         int expectedValue = 2;
         int obtainedValue = list.size();
@@ -84,9 +85,9 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testReturnSizeBiggerThanThePreviousOne(){
-        list.append(new DequeNode(3, null, null));
+        list.append(new DequeNode<>(3, null, null));
         int previousValue = list.size();
-        list.append(new DequeNode(6, null, null));
+        list.append(new DequeNode<>(6, null, null));
         int actualValue = list.size();
 
         assertTrue(previousValue < actualValue);
@@ -94,7 +95,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testReturnSizeEqualsToZeroWhenDeletingLastElement(){
-        list.append(new DequeNode(9, null, null));
+        list.append(new DequeNode<>(9, null, null));
         list.deleteFirst();
         int expectedValue = 0;
         int obtainedValue = list.size();
@@ -103,18 +104,18 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testDeleteFirstEqualsToLastAfterDeletingOneNodeFromAListWithTwoElements(){
-        list.append(new DequeNode(3, null, null));
-        list.append(new DequeNode(5, null, null));
+        list.append(new DequeNode<>(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
         list.deleteFirst();
         assertEquals(list.peekFirst(), list.peekLast());
     }
 
     @Test
     public void testPreviousFromLastBecomeLastAfterDeletingLast(){
-        list.append(new DequeNode(6, null, null));
-        list.append(new DequeNode(8, null, null));
-        list.append(new DequeNode(3, null, null));
-        list.append(new DequeNode(5, null, null));
+        list.append(new DequeNode<>(6, null, null));
+        list.append(new DequeNode<>(8, null, null));
+        list.append(new DequeNode<>(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
 
         DequeNode x = list.peekLast();
         DequeNode prev = x.getPrevious();
@@ -125,10 +126,10 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testDeleteFirstReturnNextFromFirstBecomeFirstAfterDeletingHim(){
-        list.append(new DequeNode(6, null, null));
-        list.append(new DequeNode(8, null, null));
-        list.append(new DequeNode(3, null, null));
-        list.append(new DequeNode(5, null, null));
+        list.append(new DequeNode<>(6, null, null));
+        list.append(new DequeNode<>(8, null, null));
+        list.append(new DequeNode<>(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
 
         DequeNode x = list.peekFirst();
         DequeNode next = x.getNext();
@@ -139,14 +140,14 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testAppendLeftReturnNodeIsTheFirstWhenWeAddedIt(){
-        list.append(new DequeNode(6, null, null));
-        list.append(new DequeNode(8, null, null));
-        list.append(new DequeNode(3, null, null));
-        list.append(new DequeNode(5, null, null));
+        list.append(new DequeNode<>(6, null, null));
+        list.append(new DequeNode<>(8, null, null));
+        list.append(new DequeNode<>(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
 
         DequeNode x = list.peekFirst();
 
-        list.appendLeft(new DequeNode(3, null, null));
+        list.appendLeft(new DequeNode<>(3, null, null));
 
         assertEquals(x.getPrevious(),list.peekFirst());
     }
@@ -154,29 +155,29 @@ class DoubleLinkedListQueueTest {
     @Test
     public void testPeekLastReturnNullWhenCallingNextFromLastNode(){
         //Devuelve null cuando llamamos al next del ultimo nodo
-        list.append(new DequeNode(6, null, null));
-        list.append(new DequeNode(8, null, null));
-        list.append(new DequeNode(3, null, null));
-        list.append(new DequeNode(5, null, null));
+        list.append(new DequeNode<>(6, null, null));
+        list.append(new DequeNode<>(8, null, null));
+        list.append(new DequeNode<>(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
 
         assertEquals(list.peekLast().getNext(), null);
     }
 
     @Test
     public void testPeekFirstReturnNullWhenCallingPreviousFromFirstNode(){
-        list.append(new DequeNode(6, null, null));
-        list.append(new DequeNode(8, null, null));
-        list.append(new DequeNode(3, null, null));
-        list.append(new DequeNode(5, null, null));
+        list.append(new DequeNode<>(6, null, null));
+        list.append(new DequeNode<>(8, null, null));
+        list.append(new DequeNode<>(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
 
         assertEquals(list.peekFirst().getPrevious(), null);
     }
 
     @Test
     public void testSizeReturnValueDifferentFromZeroToAListNotEmpty(){
-        list.append(new DequeNode(8, null, null));
-        list.append(new DequeNode(3, null, null));
-        list.append(new DequeNode(5, null, null));
+        list.append(new DequeNode<>(8, null, null));
+        list.append(new DequeNode<>(3, null, null));
+        list.append(new DequeNode<>(5, null, null));
 
         int obtainedValue = list.size();
         int notExpectedValue = 0;
@@ -185,7 +186,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testSizeReturnValueOneWhenFirstEqualsLast(){
-        list.append(new DequeNode(1, null, null));
+        list.append(new DequeNode<>(1, null, null));
         int expectedValue = 1;
         int obtainedValue = list.size();
         assertEquals(expectedValue, obtainedValue);
@@ -275,11 +276,18 @@ class DoubleLinkedListQueueTest {
         Scenario: find de un elemento que está en la lista
      */
     @Test
-    public void shouldReturnCorrectNode() { //IDK
-        var expectedNode1 = new DequeNode<>(5, null, null);
-        assertEquals(expectedNode1, list1.find(5));
+    public void shouldReturnCorrectNode() {
+        var Node = list1.find(30);
+        // Comprobamos que el elemento es el mismo
+        assertEquals(30, Node.getItem());
+        // Comprobamos que el next y el prev son null
+        assertTrue(Node.getNext() == null && Node.getPrevious() == null);
 
-        var obtainedNode = list2.find(9);
+        var Node2 = list2.find(6);
+        //Comprobamos que el elemento es el mismo
+        assertEquals(6,Node2.getItem());
+        //Comprobamos que next y prev no son nulos
+        assertTrue(Node2.getNext() != null && Node2.getPrevious() != null);
     }
 
     /*
@@ -287,8 +295,12 @@ class DoubleLinkedListQueueTest {
      */
     @Test
     public void shouldReturnOneNodeIfElementIfDuplicated() {
-        var auxNext = new DequeNode<>(2, null, null);
-        var expectedNode = new DequeNode<>(2, auxNext, null);
+        //Si tenemos 2 nodos con el mismo elemento, devolvemos el primero que encontramos
+        duplicated.append(new DequeNode<>(2,null,null));
+        duplicated.append(new DequeNode<>(2,null,null));
+
+        var Node = duplicated.find(2);
+        assertTrue(Node.isFirstNode());
     }
     /*
         Eliminar un elemento de una lista vacia
@@ -296,7 +308,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void testDeleteReturnExceptionWhenDeletingElementFromEmptyList() {
-        assertThrows(DoubleLinkedListQueueException.class, () -> empty.delete(new DequeNode(5, null, null)));
+        assertThrows(DoubleLinkedListQueueException.class, () -> empty.delete(new DequeNode<Object>(5, null, null)));
     }
 
     /*
