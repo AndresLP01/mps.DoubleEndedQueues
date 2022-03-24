@@ -389,10 +389,11 @@ class DoubleLinkedListQueueTest {
 
         list2.sort(comparator);
         int i = 0;
-        while(i < list2.size()){
-
+        while(i < list2.size() && list2.getAt(i).getNext()!= null){
+            assertTrue((Integer) list2.getAt(i).getItem() < (Integer) list2.getAt(i).getNext().getItem() );
+            i++;
         }
-        assertTrue((Integer) list2.peekFirst().getItem() < (Integer) list2.peekFirst().getNext().getItem() );
+
     }
 
 }
